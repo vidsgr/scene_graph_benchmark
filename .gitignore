@@ -39,5 +39,6 @@ dist/
 .ptconfig
 .ptignore
 pretrained_model/
+datasets/
 run_philly.py
 vrd_philly_tools_submit.yaml

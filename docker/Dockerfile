@@ -1,5 +1,5 @@
-ARG CUDA="10.1"
-ARG CUDNN="7"
+ARG CUDA="11.1"
+ARG CUDNN="8"
 
 FROM nvidia/cuda:${CUDA}-cudnn${CUDNN}-devel-ubuntu18.04
 
@@ -38,7 +38,8 @@ RUN python -m nltk.downloader punkt
 
 # Install latest PyTorch 1.7.1
 ARG CUDA
-RUN conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10.1 -c pytorch \
+#RUN conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.1 -c pytorch \
+RUN conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c nvidia \
  && conda clean -ya
 RUN conda install -y -c conda-forge timm einops
 
