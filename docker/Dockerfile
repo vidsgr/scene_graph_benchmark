@@ -8,7 +8,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 # install basics
 RUN apt-get update -y \
  && apt-get install -y apt-utils git curl ca-certificates bzip2 cmake tree htop bmon iotop g++ \
- && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev libyaml-dev vim zsh wget htop tmux
+ && apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev libyaml-dev vim zsh wget htop tmux 
 
 # Install Miniconda
 RUN curl -so /miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
@@ -62,8 +62,9 @@ RUN echo """syntax on\nfiletype indent on\nset autoindent\nset number\ncolorsche
 
 CMD [ "zsh" ]
 
-# RUN git clone https://github.com/microsoft/scene_graph_benchmark.git \
-#  && cd scene_graph_benchmark \
-#  && python setup.py build develop
+RUN apt update && apt install -y libgl1-mesa-glx
+RUN git clone https://github.com/vidsgr/scene_graph_benchmark.git \
+ && cd scene_graph_benchmark \
+ && python setup.py build develop
 
-# WORKDIR /scene_graph_benchmark
+WORKDIR /scene_graph_benchmark
