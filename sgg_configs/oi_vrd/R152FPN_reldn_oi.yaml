@@ -77,7 +77,7 @@ TEST:
     TSV_SAVE_SUBSET: ['rect', 'class', 'conf', 'relations', 'relation_scores']
     GATHER_ON_CPU: True
     SKIP_PERFORMANCE_EVAL: False
-    OUTPUT_RELATION_FEATURE: False
+    OUTPUT_RELATION_FEATURE: True
 OUTPUT_DIR: "./exps/ji_relation_X152FPN_test"
 DATA_DIR: "./datasets"
 DISTRIBUTED_BACKEND: 'gloo'
